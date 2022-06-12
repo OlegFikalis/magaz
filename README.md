@@ -1,20 +1,19 @@
-# django-project
+# Magaz 
 
-## Setup
+## Запуск проекта 
 
-### Install Django:
+### Клонирование репозитория :
 ```bash
-pip install Django
+git clone https://github.com/OlegFikalis/magaz.git 
+cd magaz
 ```
 
-### Perform database migration:
+### Установка зависимостей:
 ```bash
-python manage.py check
-python manage.py migrate
+pip install -r requirements.txt
 ```
 
-## Run Development Server
-
+## Запуск сервера разработки 
 ```bash
-python manage.py runserver
+python manage.py runserver 127.0.0.1:9000
 ```
