@@ -1,43 +1,64 @@
-# Developing Django on Repl.it
+# Usage
 
-- Fork this template to get started
-- Simply hit run to start the server
-- The server will autoreload as needed. You don't need to restart the server manually.
+To use this template to start your own project:
 
-## Add your first view
+### Existing virtualenv
 
-1. Create a file under `mysite` named `views.py` with the following contents:
+If your project is already in an existing python3 virtualenv first install django by running
 
-```
-from django.http import HttpResponse
+    $ pip install django
+    
+And then run the `django-admin.py` command to start the new project:
 
+    $ django-admin.py startproject \
+      --template=https://github.com/nikola-k/django-template/zipball/master \
+      --extension=py,md \
+      <project_name>
+      
+### No virtualenv
 
-def index(request):
-    return HttpResponse("Hello, world.")
-```
+This assumes that `python3` is linked to valid installation of python 3 and that `pip` is installed and `pip3`is valid
+for installing python 3 packages.
 
-2. Add a url pattern under `mysite/urls.py`. It should look like this:
+Installing inside virtualenv is recommended, however you can start your project without virtualenv too.
 
-```
-from django.contrib import admin
-from django.urls import path
-from . import views
+If you don't have django installed for python 3 then run:
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.index, name='index'),
-]
-```
+    $ pip3 install django
+    
+And then:
 
-## Shell
+    $ python3 -m django startproject \
+      --template=https://github.com/nikola-k/django-template/zipball/master \
+      --extension=py,md \
+      <project_name>
+      
+      
+After that just install the local dependencies, run migrations, and start the server.
 
-Django utilizes the shell for managing your site. For this click on the `?` in the lower-right corner and click "Workspace shortcuts" from there you can open a new shell pane. 
+{% endif %}
 
-## Database
+# {{ project_name|title }}
 
-By default this template utilizes the sqlite database engine. While this is fine for development it won't work with external users of your app as we don't persist changes to files when they happen outside the development environment. 
+# Getting Started
 
-We suggest bringing a database using an outside service. 
+First clone the repository from Github and switch to the new directory:
 
-See Django documentation on how to setup a database: https://docs.djangoproject.com/en/3.0/intro/tutorial02/
+    $ git clone git@github.com/USERNAME/{{ project_name }}.git
+    $ cd {{ project_name }}
+    
+Activate the virtualenv for your project.
+    
+Install project dependencies:
 
+    $ pip install -r requirements/local.txt
+    
+    
+Then simply apply the migrations:
+
+    $ python manage.py migrate
+    
+
+You can now run the development server:
+
+    $ python manage.py runserver
